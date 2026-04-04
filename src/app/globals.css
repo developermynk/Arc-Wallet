@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+/* ═══ Button micro-interactions ═══ */
+.btn-micro {
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+.btn-micro:hover {
+  transform: translateY(-1px);
+}
+.btn-micro:active {
+  transform: scale(0.98);
+}
+
+/* ═══ Terminal log ═══ */
+.term-log {
+  background: rgba(22, 27, 34, 0.8);
+  font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+  border-left: 2px solid rgba(99, 102, 241, 0.2);
+  transition: border-color 0.2s ease;
+}
+.term-log:hover {
+  border-left-color: rgba(99, 102, 241, 0.4);
+}
+
+/* ═══ Glass panel (dark default) ═══ */
+@layer utilities {
+  .glass-panel {
+    background: rgba(24, 30, 38, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+  }
+
+  /* Glass panel (light) */
+  .light .glass-panel {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Shimmer text effect */
+  .animate-holo-text {
+    background: linear-gradient(to right, #818cf8, #6366f1, #818cf8);
+    background-size: 200% 100%;
+    animation: shimmer 3s ease infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Scrollbar (dark) */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+    border-radius: 3px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #52525b;
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   LIGHT THEME — Full white UI override
+   Triggered by .light class on <html> element
+   ═══════════════════════════════════════════════ */
+
+/* ── Page background ── */
+.light body,
+.light .bg-zinc-950 {
+  background-color: #FFFFFF !important;
+  color: #1F2328 !important;
+}
+.light main {
+  background-color: #FFFFFF !important;
+}
+
+/* ── Sidebar ── */
+.light aside {
+  background-color: #F8F9FB !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ── Translucent dark overlays → light gray surface ── */
+.light .bg-white\/5,
+.light .bg-white\/\[0\.03\],
+.light .bg-white\/\[0\.04\] {
+  background: rgba(0, 0, 0, 0.02) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+.light .bg-white\/10 {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+.light .bg-white\/15 {
+  background: rgba(0, 0, 0, 0.06) !important;
+}
+
+.light .bg-zinc-900,
+.light .bg-zinc-950,
+.light .bg-\[\#0E1117\],
+.light .bg-\[\#0F1420\],
+.light .bg-\[\#181e26\],
+.light .bg-\[\#080c14\],
+.light .bg-\[\#0a0e17\] {
+  background-color: #F6F8FA !important;
+}
+
+.light .bg-zinc-900\/60,
+.light .bg-zinc-900\/80 {
+  background: #F8F9FB !important;
+}
+
+/* ── Borders ── */
+.light .border-white\/5,
+.light .border-white\/8,
+.light .border-white\/10,
+.light .border-zinc-800,
+.light .border-zinc-800\/60,
+.light .border-zinc-800\/80 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ── Text colors ── */
+.light .text-white {
+  color: #1F2328 !important;
+}
+.light .text-zinc-100 {
+  color: #1F2328 !important;
+}
+.light .text-zinc-200,
+.light .text-gray-300 {
+  color: #374151 !important;
+}
+.light .text-zinc-400,
+.light .text-gray-400 {
+  color: #6B7280 !important;
+}
+.light .text-gray-500,
+.light .text-zinc-500 {
+  color: #9CA3AF !important;
+}
+.light .text-zinc-600,
+.light .text-gray-600 {
+  color: #B0B8C1 !important;
+}
+
+/* ── Terminal log (light) ── */
+.light .term-log {
+  background: #F8F9FB !important;
+  border-left-color: rgba(99, 102, 241, 0.15) !important;
+}
+.light .term-log:hover {
+  border-left-color: rgba(99, 102, 241, 0.3) !important;
+}
+
+/* ── Scrollbar (light) ── */
+.light .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+}
+.light .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* ── Active theme toggle button (light) ── */
+.light .bg-indigo-500\/10 {
+  background: rgba(99, 102, 241, 0.08) !important;
+  border-color: rgba(99, 102, 241, 0.2) !important;
+}
+.light .text-indigo-400 {
+  color: #4F46E5 !important;
+}
+
+/* ── Network Monitor panel (light) ── */
+.light .net-panel {
+  background: #F6F8FA !important;
+  border-color: rgba(16, 185, 129, 0.2) !important;
+}
+.light .nm-label {
+  color: #66BB6A !important;
+}
+.light .net-footer {
+  color: #66BB6A !important;
+}
+.light .net-footer span:first-child {
+  color: #4CAF50 !important;
+}
+.light .text-emerald-500 {
+  color: #16a34a !important;
+}
+.light .text-emerald-500\/70,
+.light .text-emerald-500\/60 {
+  color: #22c55e !important;
+}
+.light .text-amber-500 {
+  color: #d97706 !important;
+}
+.light .text-amber-500\/70 {
+  color: #b45309 !important;
+}
+.light .text-red-500 {
+  color: #dc2626 !important;
+}
+.light .text-amber-600 {
+  color: #b45309 !important;
+}
+
+/* ── Quick Action buttons (light) ── */
+.light .qa-btn {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background: #F6F8FA !important;
+}
+.light .qa-btn:hover {
+  background: #EEF1F5 !important;
+}
+.light .qa-btn .text-zinc-600 {
+  color: #4B5563 !important;
+}
+.light .qa-btn:hover .text-zinc-600 {
+  color: #1F2937 !important;
+}
+.light .bg-zinc-900\/80,
+.light .bg-zinc-900\/90 {
+  background: rgba(255, 255, 255, 1) !important;
+}
+.light .bg-white\/\[0\.03\] {
+  background: #F6F8FA !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+}
+.light .text-indigo-300 {
+  color: #4338CA !important;
+}
+.light .text-indigo-300\/80 {
+  color: #4F46E5 !important;
+}
+.light .text-indigo-200 {
+  color: #4338CA !important;
+}
+.light .text-white\/60 {
+  color: #374151 !important;
+}
+.light .text-white\/90 {
+  color: #1F2328 !important;
+}
