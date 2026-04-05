@@ -107,8 +107,8 @@ interface SwapState {
 }
 
 interface SwapContextType extends SwapState {
-  fetchQuote: (tokenIn: SwapTokenName, tokenOut: SwapTokenName, amountIn: string) => Promise<void>;
-  executeSwap: (tokenIn: SwapTokenName, tokenOut: SwapTokenName, amountIn: string) => Promise<boolean>;
+  fetchQuote: (tokenIn: SwapTokenName, tokenOut: SwapTokenName, amountIn: string, adapter?: any) => Promise<void>;
+  executeSwap: (tokenIn: SwapTokenName, tokenOut: SwapTokenName, amountIn: string, adapter?: any) => Promise<boolean>;
   clear: () => void;
 }
 
@@ -160,7 +160,7 @@ export function SwapProvider({ children }: { children: ReactNode }) {
 
   /* ── Fetch quote using Circle App Kit ── */
   const fetchQuote = useCallback(async (
-    tokenIn: SwapTokenName, tokenOut: SwapTokenName, amountIn: string
+    tokenIn: SwapTokenName, tokenOut: SwapTokenName, amountIn: string, _adapter?: any
   ) => {
     const tIn = ARC_TOKENS[tokenIn];
     const tOut = ARC_TOKENS[tokenOut];
@@ -213,6 +213,7 @@ export function SwapProvider({ children }: { children: ReactNode }) {
     tokenIn: SwapTokenName,
     tokenOut: SwapTokenName,
     amountIn: string,
+    adapter?: any,
   ): Promise<boolean> => {
     const tIn = ARC_TOKENS[tokenIn];
     const tOut = ARC_TOKENS[tokenOut];
